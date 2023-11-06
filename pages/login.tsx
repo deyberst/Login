@@ -1,6 +1,11 @@
+import { useState } from 'react';
 import {AiFillEye} from 'react-icons/Ai'
+import {AiFillEyeInvisible} from 'react-icons/Ai'
+
 
 const Login = () => {
+    const [ShowPwd, setShowPwd] = useState(false)
+
     return <main className='h-screen w-full flex flex-row'>
         <aside className="debug w-6/12"></aside>
         <aside className="debug w-6/12 flex flex-col justify-center items-center bg-[#722e9a]">
@@ -20,13 +25,15 @@ const Login = () => {
 
                     <label className="text-gray-400 ">Contraseña</label>
                     <div className="flex flex-row items-center">
-                        <input type="password" id="password" className="bg-gray-200
+                        <input type={ShowPwd ? "text" :"password"} id="password" className="bg-gray-200
                          text-gray-900 text-sm rounded-lg
                          focus:ring-blue-500 focus:border-blue-500
                          block w-full p-2.5" placeholder="•••••••••" required>
 
                         </input>
-                        <div className=' pl-2 text-gray-400 hover:text-[#facb2e]'><AiFillEye/></div>
+                        <div className=' pl-2 text-gray-400 hover:text-[#facb2e]' onClick={()=>setShowPwd(!ShowPwd)}>
+                            {ShowPwd ? <AiFillEye/>:<AiFillEyeInvisible/> }
+                            </div>
                         
                     </div>
 
